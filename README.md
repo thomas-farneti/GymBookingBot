@@ -1,95 +1,77 @@
-# Gym Booking Bot
+# Gym Booking Script
 
-## Overview
-
-GymBookingBot is a Python script that automates the process of booking gym lessons using the Gym's Booking API. The script runs daily and schedules the booking four days in advance.
+This script automates the booking of gym lessons through an API. It is designed to run on a scheduled basis to reserve a gym lesson for a specific date and time.
 
 ## Table of Contents
-
+- [Features](#features)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Configuration](#configuration)
-- [Dependencies](#dependencies)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Logging](#logging)
+- [Contributing](#contributing)
 - [License](#license)
 
-## Installation
+## Features
+- Automated booking of gym lessons based on predefined schedules.
+- Retry mechanism for handling temporary failures.
+- Configuration via YAML file and environment variables.
 
+## Prerequisites
+- Python 3.x
+- Pip (Python package installer)
+
+## Installation
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/GymBookingBot.git
+   git clone https://github.com/your-username/gym-booking-script.git
    ```
 
-2. Install the required dependencies:
+2. Navigate to the project directory:
+
+   ```bash
+   cd gym-booking-script
+   ```
+
+3. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-## Usage
-
-1. Configure the script by editing the `config.py` file.
-2. Run the script:
+## Configuration
+1. Copy the `config.example.yaml` file to `config.yaml`:
 
    ```bash
-   python gym_booking_job.py
+   cp config.example.yaml config.yaml
    ```
 
-3. Check the logs for information on the booking process.
+2. Edit the `config.yaml` file with your specific details.
 
-## Configuration
+## Usage
+Run the script using the following command:
 
-Edit the `config.yaml` file to set up your authentication token, API endpoints, and other necessary parameters.
-
-```yaml
-# config.yaml
-
-API:
-  url: https://app.shaggyowl.com/funzioniapp/v407/prenotazione_new
-
-HEADERS:
-  Accept: '*/*'
-  Accept-Language: 'en-US,en;q=0.9,it;q=0.8'
-  Connection: 'keep-alive'
-  Cookie: 'paste your Auth token here'
-  DNT: '1'
-  Origin: 'https://app.shaggyowl.com'
-  Referer: 'https://app.shaggyowl.com/accesso-cliente/index.html'
-  Sec-Fetch-Dest: 'empty'
-  Sec-Fetch-Mode: 'cors'
-  Sec-Fetch-Site: 'same-origin'
-  User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-  content-type: 'application/x-www-form-urlencoded; charset=utf-8'
-  sec-ch-ua: '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"'
-  sec-ch-ua-mobile: '?0'
-  sec-ch-ua-platform: '"Windows"'
-
-SESSION:
-  id: 'Paste you session Id here'
-
-RETRY:
-  max_attempts: 3
-  retry_interval: 300
-
-SCHEDULE_IDS:
-  monday: '4379230'
-  tuesday: '4379231'
-  wednesday: '4379232'
-  thursday: '4379233'
-  friday: '4379234'
-
-
-# Add other configuration parameters as needed
+```bash
+python gym_booking_script.py
 ```
 
-## Dependencies
+## Environment Variables
+- `API_URL`: URL of the gym booking API.
+- `SESSION_ID`: Session ID for authentication.
+- `LOG_LEVEL`: (Optional) Log level for controlling the verbosity of logs (default: INFO).
+- `LOG_FILE`: (Optional) File path to store logs (default: logs will be printed to the console).
 
-- Python 3.x
+## Logging
+- Logs are configured using both the standard `logging` module and the `structlog` library.
+- Log level and log file can be configured through environment variables.
+
+## Contributing
+Contributions are welcome! Please follow the [Contributing Guidelines](CONTRIBUTING.md).
 
 ## License
-
 This project is licensed under the [MIT License](LICENSE).
 ```
 
-You can copy the entire content and paste it into your README.md file. Adjust the placeholders such as `[Your Gym's Name]` and `[Gym's Booking API]` with your specific gym information.# GymBookingBot
-Quick gym booking bot in python
+Please note that the above template includes placeholders such as `your-username` and `gym-booking-script`. Replace these placeholders with your GitHub username and the actual repository name. Also, make sure to include a `CONTRIBUTING.md` file if you want to provide guidelines for contributions.
